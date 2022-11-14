@@ -1,0 +1,9 @@
+{% extends('layout.njk') %}
+
+{% block main %}
+{{ page.content | safe }}
+
+{% for hero in page.blocks.hero %}
+    {{ hero.content }}
+{% endfor %}
+{% endblock %}

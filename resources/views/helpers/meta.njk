@@ -1,0 +1,7 @@
+{% macro meta(page) %}
+    {% if (page.meta) %}
+        {% for key, content in page.meta %}
+            <meta name="{{ key }}" content="{{ content }}" />
+        {% endfor %}
+    {% endif %}
+{% endmacro %}

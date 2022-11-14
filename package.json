@@ -1,0 +1,22 @@
+{
+    "name": "happy-site-webpack-plugin",
+    "version": "0.1.0",
+    "type": "module",
+    "author": "Björn Hase <me@herr-hase.wtf>",
+    "main": "index.js",
+    "description": "Generating a Website from a Markdown Generator",
+    "dependencies": {
+        "dayjs": "^1.11.6",
+        "fast-xml-parser": "^4.0.11",
+        "html-minifier": "^4.0.0",
+        "js-yaml": "^4.1.0",
+        "lodash.merge": "^4.6.2",
+        "marked": "^4.1.1",
+        "mkdirp": "^1.0.4",
+        "nunjucks": "^3.2.3",
+        "schema-utils": "^4.0.0",
+        "sharp": "^0.31.1",
+        "slugify": "^1.6.5",
+        "yaml": "^2.1.3"
+    }
+}
