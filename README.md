@@ -14,3 +14,21 @@ i had development a CMS that runs on Markdown File a few years ago as a proof of
 ```
 npm install @node001/happy-site-webpack-plugin --save-dev
 ```
+
+## Markdown Files
+
+```
+---
+title: "health goth DIY tattooed"
+view: "home.njk"
+meta:
+    description: "La"
+media:
+    teaser:
+        src: "_images/test.jpeg"
+        alt: "cold-pressed"
+---
+```
+
+## Block Files
+
