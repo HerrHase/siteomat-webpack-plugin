@@ -1,7 +1,7 @@
-import path from 'path'
-import * as fs from 'fs'
+const path = require('path')
+const fs = require('fs')
 
-import Media from './../media.js'
+const Media = require('./../media.js')
 
 /**
  *  asset - checks manifest.json for given path and return

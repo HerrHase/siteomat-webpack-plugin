@@ -33,4 +33,4 @@ class ConfigStore {
 // create instance
 const instance = new ConfigStore();
 
-export default instance
+module.exports =instance

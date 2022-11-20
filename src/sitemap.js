@@ -1,5 +1,5 @@
-import { XMLParser, XMLBuilder, XMLValidator} from 'fast-xml-parser'
-import dayjs from 'dayjs'
+const { XMLParser, XMLBuilder, XMLValidator} = require('fast-xml-parser')
+const dayjs = require('dayjs')
 
 /**
  *
@@ -7,7 +7,7 @@ import dayjs from 'dayjs'
  *  @author Björn Hase <me@herr-hase.wtf>
  *  @license http://opensource.org/licenses/MIT The MIT License
  *  @link https://gitea.node001.net/HerrHase/happy-site-webpack-plugin.git
- *  
+ *
  */
 class Sitemap {
 
@@ -103,4 +103,4 @@ class Sitemap {
     }
 }
 
-export default Sitemap
+module.exports =Sitemap

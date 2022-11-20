@@ -1,5 +1,5 @@
-import path from 'path'
-import parseMarkdownFile from './../parsers/markdown.js'
+const path = require('path')
+const parseMarkdownFile = require('./../parsers/markdown.js')
 
 /**
  *  Block
@@ -31,4 +31,4 @@ class Block {
     }
 }
 
-export default Block
+module.exports =Block

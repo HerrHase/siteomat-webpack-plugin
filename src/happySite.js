@@ -1,14 +1,14 @@
-import fs from 'fs'
-import path from 'path'
-import mkdirp from 'mkdirp'
+const fs = require('fs')
+const path = require('path')
+const mkdirp = require('mkdirp')
 
-import Engine from './engine.js'
-import Sitemap from './sitemap.js'
+const Engine = require('./engine.js')
+const Sitemap = require('./sitemap.js')
 
-import PagesQuery from './queries/pages.js'
-import parseYamlFile from './parsers/yaml.js'
+const PagesQuery = require('./queries/pages.js')
+const parseYamlFile = require('./parsers/yaml.js')
 
-import configStore from './config.js'
+const configStore = require('./config.js')
 
 /**
  *  Main
@@ -29,10 +29,10 @@ class HappySite {
      *  @param  {string} destination
      *
      */
-    constructor(source, destination, views) {
+    constructor(source, views, destination) {
         this._source = source
-        this._destination = destination
         this._views = views
+        this._destination = destination
 
         configStore.set('source', source)
         configStore.set('destination', destination)
@@ -76,7 +76,7 @@ class HappySite {
                     return;
                 }
 
-                // create directories and write file from page
+                // create directories and write file = page
                 mkdirp(this._destination + page.pathname).then(() => {
                     fs.writeFileSync(this._destination + page.pathname + '/' + page.filename, content)
                 })
@@ -90,4 +90,4 @@ class HappySite {
     }
 }
 
-export default HappySite
+module.exports = HappySite

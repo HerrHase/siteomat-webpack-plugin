@@ -1,4 +1,4 @@
-import yaml from 'js-yaml'
+const yaml = require('js-yaml')
 
 /**
  *  parse string of file and only parse yaml
@@ -16,10 +16,10 @@ function parseYamlFile(file) {
     try {
         config = yaml.load(file)
     } catch (error) {
-        throw new Error('Yaml has errors!')
+        throw new Error('parseYamlFile: Yaml has errors!')
     }
 
     return config
 }
 
-export default parseYamlFile
+module.exports = parseYamlFile

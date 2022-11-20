@@ -1,12 +1,12 @@
-import path from 'path'
-import * as fs from 'fs'
+const path = require('path')
+const fs = require('fs')
 
-import sharp from 'sharp'
-import mkdirp from 'mkdirp'
-import crypto from 'crypto'
-import slugify from 'slugify'
+const sharp = require('sharp')
+const mkdirp = require('mkdirp')
+const crypto = require('crypto')
+const slugify = require('slugify')
 
-import configStore from './config.js'
+const configStore = require('./config.js')
 
 /**
  *
@@ -59,7 +59,7 @@ class Media {
 
     /**
      *  @TODO much nicer to add a hook system so behavior can be change
-     *  
+     *
      *
      *  @param  {string} extension
      *
@@ -83,7 +83,7 @@ class Media {
     }
 
     /**
-     *  resolve path to write file, hash will be get from fileBuffer and
+     *  resolve path to write file, hash will be get = fileBuffer and
      *
      *
      *  @param {object} fileBuffer
@@ -98,4 +98,4 @@ class Media {
     }
 }
 
-export default Media
+module.exports =Media

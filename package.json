@@ -1,7 +1,7 @@
 {
     "name": "happy-site-webpack-plugin",
     "version": "0.1.0",
-    "type": "module",
+    "build": "webpack",
     "author": "Björn Hase <me@herr-hase.wtf>",
     "main": "index.js",
     "description": "Generating a Website from a Markdown Generator",

@@ -1,8 +1,8 @@
-import fs from 'fs'
-import path from 'path'
+const fs = require('fs')
+const path = require('path')
 
-import Page from './../models/page.js'
-import Blocks from './../queries/blocks.js'
+const Page = require('./../models/page.js')
+const Blocks = require('./../queries/blocks.js')
 
 /**
  *  Pages - search, filter and find pages
@@ -155,4 +155,4 @@ class Pages {
 
 }
 
-export default Pages
+module.exports =Pages

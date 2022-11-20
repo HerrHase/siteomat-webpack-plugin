@@ -1,27 +1,12 @@
-import { validate } from 'schema-utils'
-import HappySite from './src/happySite.js'
+const HappySite = require('./src/happySite.js')
 
-// schema for options object
-const schema = {
-    type: 'object',
-    properties: {
-        source: {
-            type: 'string'
-        },
-        destination: {
-            type: 'string'
-        },
-        views: {
-            type: 'string'
+class HappySiteWebpackPlugin {
+
+    constructor(source, views) {
+        this._options = {
+            source: source,
+            views: views
         }
-    }
-}
-
-export default class HappySiteWebpackPlugin {
-    constructor(options = {}) {
-        validate(schema, options)
-
-        this._options = options
     }
 
     apply(compiler) {
@@ -42,6 +27,9 @@ export default class HappySiteWebpackPlugin {
 
         compiler.hooks.thisCompilation.tap(pluginName, (compilation) => {
 
+            const compilationHash = compilation.hash
+            const webpackPublicPath = '.' + compilation.getAssetPath(compilation.outputOptions.publicPath, { hash: compilationHash })
+
             // Tapping to the assets processing pipeline on a specific stage.
             compilation.hooks.processAssets.tap({
                 name: pluginName,
@@ -52,10 +40,11 @@ export default class HappySiteWebpackPlugin {
             },
 
             (assets) => {
-                const happySite = new HappySite(this._options.source, this._options.destination, this._views)
+                const happySite = new HappySite(webpackPublicPath + this._options.source, this._options.views, webpackPublicPath)
+                happySite.run()
             })
         })
     }
 }
 
-module.exports = { HappySiteWebpackPlugin }
+module.exports = HappySiteWebpackPlugin

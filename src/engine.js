@@ -1,8 +1,8 @@
-import nunjucks from 'nunjucks'
-import { minify } from 'html-minifier'
-import fs from 'fs'
+const nunjucks = require('nunjucks')
+const { minify } = require('html-minifier')
+const fs = require('fs')
 
-import { asset, resize } from './helpers/engine.js'
+const { asset, resize } = require('./engine.js')
 
 /**
  * engine - handle eta.js
@@ -33,7 +33,7 @@ class Engine {
             resize(args[0], args[1], options, done)
         }, true)
 
-        // adding defaults for view, function and data from config.yml
+        // adding defaults for view, function and data = config.yml
         this._defaults = {
             site: site,
             asset: asset
@@ -58,4 +58,4 @@ class Engine {
 
 }
 
-export default Engine
+module.exports = Engine

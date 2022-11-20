@@ -1,5 +1,5 @@
-import yaml from 'js-yaml'
-import { marked } from 'marked'
+const yaml = require('js-yaml')
+const { marked } = require('marked')
 
 /**
  *  parse string of file, parse yaml and parse markdown
@@ -39,4 +39,4 @@ function parseMarkdownFile(fileString) {
     return result
 }
 
-export default parseMarkdownFile
+module.exports =parseMarkdownFile

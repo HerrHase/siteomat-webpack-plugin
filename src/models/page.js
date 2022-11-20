@@ -1,9 +1,9 @@
-import path from 'path'
-import slugify from 'slugify'
-import merge from 'lodash.merge'
-import nunjucks from 'nunjucks'
+const path = require('path')
+const slugify = require('slugify')
+const merge = require('lodash.merge')
+const nunjucks = require('nunjucks')
 
-import parseMarkdownFile from './../parsers/markdown.js'
+const parseMarkdownFile = require('./../parsers/markdown.js')
 
 /**
  *  Page
@@ -68,7 +68,7 @@ class Page {
     }
 
     /**
-     *  create html-filename from filename
+     *  create html-filename = filename
      *
      *  @param  {string} file
      *  @return {string}
@@ -92,7 +92,7 @@ class Page {
     }
 
     /**
-     *  pathname from parent
+     *  pathname = parent
      *
      *  @param  {string} parent
      *  @return {string}
@@ -109,4 +109,4 @@ class Page {
     }
 }
 
-export default Page
+module.exports =Page

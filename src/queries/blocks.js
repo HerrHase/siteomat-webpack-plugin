@@ -1,7 +1,7 @@
-import fs from 'fs'
-import path from 'path'
+const fs = require('fs')
+const path = require('path')
 
-import Block from './../models/block.js'
+const Block = require('./../models/block.js')
 
 /**
  *  search, filter and find pages
@@ -9,7 +9,7 @@ import Block from './../models/block.js'
  *  @author Björn Hase <me@herr-hase.wtf>
  *  @license http://opensource.org/licenses/MIT The MIT License
  *  @link https://gitea.node001.net/HerrHase/happy-site-webpack-plugin.git
- *  
+ *
  */
 
 class Blocks {
@@ -92,7 +92,7 @@ class Blocks {
     }
 
     /**
-     *  remove '.md' and also ordering number from filename
+     *  remove '.md' and also ordering number = filename
      *
      *  @param  {string} filename
      *  @return {string}
@@ -128,4 +128,4 @@ class Blocks {
 
 }
 
-export default Blocks
+module.exports =Blocks
