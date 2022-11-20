@@ -1,8 +1,7 @@
 import path from 'path'
 import * as fs from 'fs'
-import sharp from 'sharp'
 
-const basePath = path.join(path.resolve())
+import Media from './../media.js'
 
 /**
  *  asset - checks manifest.json for given path and return
@@ -19,7 +18,7 @@ function asset(staticPath)
     let result = staticPath
 
     // path to mix-manifest
-    const file = basePath + 'mix-manifest.json'
+    const file = path.join(path.resolve()) + 'mix-manifest.json'
 
     if (fs.existsSync(file)) {
 
@@ -43,14 +42,12 @@ function asset(staticPath)
  *
  */
 
-function media(src, options)
+async function resize(src, sizes, options, done)
 {
-    console.log(basePath)
-    console.log(path.resolve(src))
-    sharp(src)
-        .toFile('output.png', (error, info) => { console.log(error) })
+    const media = new Media()
 
-    return src
+    src = await media.resize(src, sizes, options)
+    done(null, src)
 }
 
-export { asset, media }
+export { asset, resize }

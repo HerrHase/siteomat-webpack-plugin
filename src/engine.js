@@ -1,7 +1,8 @@
 import nunjucks from 'nunjucks'
 import { minify } from 'html-minifier'
+import fs from 'fs'
 
-import { asset, media } from './helpers/engine.js'
+import { asset, resize } from './helpers/engine.js'
 
 /**
  * engine - handle eta.js
@@ -18,13 +19,19 @@ class Engine {
         // merge options
         this._options = Object.assign({}, {
             autoescapes: true,
-            throwOnUndefined: true
+            throwOnUndefined: true,
+            web: {
+                async: true
+            }
         }, options)
 
         this.nunjucks = nunjucks.configure(views, this._options)
-        this.nunjucks.addFilter('media', function(options) {
-            return media(options)
-        })
+        this.nunjucks.addFilter('resize', (...args) => {
+            const done = args.pop()
+            const options = args?.[2] ? {} : args[2]
+
+            resize(args[0], args[1], options, done)
+        }, true)
 
         // adding defaults for view, function and data from config.yml
         this._defaults = {
@@ -41,12 +48,11 @@ class Engine {
      *  @return {string}
      *
      */
-    render(view, data) {
+    render(view, data, done) {
         data = Object.assign({}, data, this._defaults)
 
-        return minify(this.nunjucks.render(view, data), {
-            removeComments: true,
-            collapseWhitespace: true
+        this.nunjucks.render(view, data, (error, response) => {
+            done(error, response)
         })
     }
 

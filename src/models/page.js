@@ -1,6 +1,7 @@
 import path from 'path'
 import slugify from 'slugify'
 import merge from 'lodash.merge'
+import nunjucks from 'nunjucks'
 
 import parseMarkdownFile from './../parsers/markdown.js'
 
@@ -53,7 +54,7 @@ class Page {
      *  @return {string}
      *
      */
-    render(engine) {
+    render(engine, done) {
 
         const page = Object.assign({}, this._fields)
 
@@ -61,11 +62,9 @@ class Page {
         page.blocks = this._blocks
         page.path = this.pathname + '/' + this.filename
 
-        const result = engine.render(this._fields.view, {
+        return engine.render(this._fields.view, {
             page: page
-        })
-
-        return result
+        }, done)
     }
 
     /**
