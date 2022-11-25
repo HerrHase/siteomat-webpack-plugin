@@ -12,7 +12,7 @@ i had development a CMS that runs on Markdown File a few years ago as a proof of
 ## Installation
 
 ```
-npm install @node001/happy-site-webpack-plugin --save-dev
+not published
 ```
 
 ## Markdown Files
