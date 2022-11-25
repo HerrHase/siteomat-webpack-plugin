@@ -29,7 +29,7 @@ class HappySite {
      *  @param  {string} destination
      *
      */
-    constructor(source, views, destination) {
+    constructor(source, views, destination, options = {}) {
         this._source = source
         this._views = views
         this._destination = destination
@@ -37,6 +37,9 @@ class HappySite {
         configStore.set('source', source)
         configStore.set('destination', destination)
         configStore.set('views', views)
+        configStore.set('options', Object.assign({}, {
+            'minifyHtml': true
+        }, options))
 
         // get config for site
         if (fs.existsSync(this._source + '/site.yml')) {

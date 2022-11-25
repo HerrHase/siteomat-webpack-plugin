@@ -55,6 +55,17 @@ class Engine {
         data = Object.assign({}, data, this._defaults)
 
         this.nunjucks.render(view, data, (error, response) => {
+
+            const options = configStore.get('options')
+
+            if (options.minifyHtml === true) {
+                response = minify(response, {
+                    removeComments: true,
+                    collapseWhitespace: true,
+                    collapseInlineTagWhitespace: true
+                })
+            }
+
             done(error, response)
         })
     }

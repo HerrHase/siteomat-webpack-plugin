@@ -3,11 +3,12 @@ const fs = require('fs')
 
 class HappySiteWebpackPlugin {
 
-    constructor(source, views, destination = null) {
+    constructor(source, views, destination = null, options = {}) {
         this._options = {
             source: source,
             views: views,
-            destination: destination
+            destination: destination,
+            options: options
         }
 
         if (!fs.existsSync(source)) {
@@ -38,7 +39,7 @@ class HappySiteWebpackPlugin {
                 this._options.destination = compilation.outputOptions.path
             }
 
-            const happySite = new HappySite(this._options.source, this._options.views, this._options.destination)
+            const happySite = new HappySite(this._options.source, this._options.views, this._options.destination, this._options.options)
             happySite.run()
         })
     }
