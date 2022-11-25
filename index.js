@@ -1,11 +1,21 @@
 const HappySite = require('./src/happySite.js')
+const fs = require('fs')
 
 class HappySiteWebpackPlugin {
 
-    constructor(source, views) {
+    constructor(source, views, destination = null) {
         this._options = {
             source: source,
-            views: views
+            views: views,
+            destination: destination
+        }
+
+        if (!fs.existsSync(source)) {
+            throw new Error('source "' + source + '" not found!')
+        }
+
+        if (!fs.existsSync(views)) {
+            throw new Error('views "' + views + '" not found!')
         }
     }
 
@@ -21,28 +31,15 @@ class HappySiteWebpackPlugin {
         // Compilation object gives us reference to some useful constants.
         const { Compilation } = webpack
 
-        // RawSource is one of the "sources" classes that should be used
-        // to represent asset sources in compilation.
-        const { RawSource } = webpack.sources
+        compiler.hooks.done.tap(pluginName, ({ compilation }) => {
 
-        compiler.hooks.thisCompilation.tap(pluginName, (compilation) => {
+            // if destination is null, use from webpack configuration
+            if (!this._options.destination) {
+                this._options.destination = compilation.outputOptions.path
+            }
 
-            const compilationHash = compilation.hash
-            const webpackPublicPath = '.' + compilation.getAssetPath(compilation.outputOptions.publicPath, { hash: compilationHash })
-
-            // Tapping to the assets processing pipeline on a specific stage.
-            compilation.hooks.processAssets.tap({
-                name: pluginName,
-
-                // Using one of the later asset processing stages to ensure
-                // that all assets were already added to the compilation by other plugins.
-                stage: Compilation.PROCESS_ASSETS_STAGE_SUMMARIZE
-            },
-
-            (assets) => {
-                const happySite = new HappySite(webpackPublicPath + this._options.source, this._options.views, webpackPublicPath)
-                happySite.run()
-            })
+            const happySite = new HappySite(this._options.source, this._options.views, this._options.destination)
+            happySite.run()
         })
     }
 }

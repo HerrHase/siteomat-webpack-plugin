@@ -62,7 +62,7 @@ class HappySite {
         const sitemap = new Sitemap(this._site)
 
         // run through pages and generate html files
-        results.forEach((page) => {
+        results.forEach((page, index) => {
             page.render(this._engine, (error, content) => {
 
                 // show errors
@@ -82,11 +82,13 @@ class HappySite {
                 })
 
                 sitemap.addPage(page)
+
+                // if run is finish, write sitemap.xml
+                if ((index + 1) === results.length) {
+                    fs.writeFileSync(this._destination + '/sitemap.xml', sitemap.getXmlAsString())
+                }
             })
         })
-
-        // write sitemap
-        fs.writeFileSync(this._destination + '/sitemap.xml', sitemap.getXmlAsString())
     }
 }
 

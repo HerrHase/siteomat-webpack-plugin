@@ -30,7 +30,8 @@ class Pages {
 
         // default options for find
         this._options = {
-            parent: ''
+            parent: '',
+            deep: -1
         }
 
         this._dirPath = dirPath
@@ -87,7 +88,12 @@ class Pages {
             }
 
             // if directory going deep
-            if (file.isDirectory()) {
+            if (file.isDirectory() && (options.deep > 0 || options.deep === -1)) {
+
+                if (options.deep > 0) {
+                    options.deep--
+                }
+
                 const childrenOptions = Object.assign({}, options, {
                     'parent': options.parent + '/' + file.name
                 })

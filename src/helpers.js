@@ -1,7 +1,7 @@
 const path = require('path')
 const fs = require('fs')
 
-const Media = require('./../media.js')
+const Media = require('./media.js')
 
 /**
  *  asset - checks manifest.json for given path and return
@@ -50,4 +50,4 @@ async function resize(src, sizes, options, done)
     done(null, src)
 }
 
-export { asset, resize }
+module.exports = { asset, resize }

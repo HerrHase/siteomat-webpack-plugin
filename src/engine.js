@@ -2,7 +2,9 @@ const nunjucks = require('nunjucks')
 const { minify } = require('html-minifier')
 const fs = require('fs')
 
-const { asset, resize } = require('./engine.js')
+const { asset, resize } = require('./helpers.js')
+const PageQuery = require('./queries/pages.js')
+const configStore = require('./config.js')
 
 /**
  * engine - handle eta.js
@@ -36,7 +38,8 @@ class Engine {
         // adding defaults for view, function and data = config.yml
         this._defaults = {
             site: site,
-            asset: asset
+            asset: asset,
+            pageQuery: new PageQuery(configStore.get('source'))
         }
     }
 
