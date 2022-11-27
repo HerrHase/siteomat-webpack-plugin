@@ -1,14 +1,14 @@
 {
-    "name": "@test/happy-site-webpack-plugin",
+    "name": "@helpers/siteomat-webpack-plugin",
     "version": "0.1.0",
     "build": "webpack",
     "author": "Björn Hase <me@herr-hase.wtf>",
     "main": "index.js",
     "repository": {
-      "type": "git",
-      "url": "git@gitea.node001.net:HerrHase/happy-site-webpack-plugin.git"
+        "type": "git",
+        "url": "git@gitea.node001.net:HerrHase/siteomat-webpack-plugin.git"
     },
-    "description": "Generating a Website from a Markdown Generator",
+    "description": "A Webpack Plugin for generating a Website as Html-Files from a Markdown File Structure",
     "dependencies": {
         "crypto": "^1.0.1",
         "dayjs": "^1.11.6",
@@ -20,7 +20,6 @@
         "marked": "^4.1.1",
         "mkdirp": "^1.0.4",
         "nunjucks": "^3.2.3",
-        "schema-utils": "^4.0.0",
         "sharp": "^0.31.1",
         "slugify": "^1.6.5",
         "yaml": "^2.1.3"

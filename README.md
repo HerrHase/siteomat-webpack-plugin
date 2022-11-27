@@ -1,8 +1,6 @@
-# happy-site-webpack-plugin
+# Site-O-Mat Webpack Plugin
 
-**In Development**
-
-A Webpack Plugin to generate a Website from a hierarchical Markdown file structure.
+A Webpack Plugin for generating a Website as Html-Files from a Markdown File Structure.
 
 Why? The Main reason i had to update some Websites, but realise there were no benfit
 to use a Full CMS or Headless CMS like Directus. Rendering the same pages that a rarley updated
@@ -19,17 +17,17 @@ Next will be,
 ## Installation
 
 ```
-npm i --save-dev site-o-mat-webpack-plugin
-yarn add --dev site-o-mat-webpack-plugin
+npm i --save-dev siteomat-webpack-plugin
+yarn add --dev siteomat-webpack-plugin
 ```
 
 ## Configuration
 
 ```
-const SiteOmatWebpackPlugin = require('site-o-mat-webpack-plugin')
+const SiteomatWebpackPlugin = require('siteomat-webpack-plugin')
 
 plugins: [
-    new SiteOmatWebpackPlugin(
+    new SiteomatWebpackPlugin(
         './resources/site',
         './resources/views'
     )
