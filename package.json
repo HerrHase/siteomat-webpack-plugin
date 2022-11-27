@@ -1,5 +1,5 @@
 {
-    "name": "happy-site-webpack-plugin",
+    "name": "@test/happy-site-webpack-plugin",
     "version": "0.1.0",
     "build": "webpack",
     "author": "Björn Hase <me@herr-hase.wtf>",
