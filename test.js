@@ -1,4 +1,4 @@
 const HappySite = require('./src/happySite.js')
 
-const happySite = new HappySite('./resources/site', './resources/views', './public')
+const happySite = new HappySite('./example/site', './example/views', './public')
 happySite.run()

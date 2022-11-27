@@ -1,6 +1,8 @@
 const fs = require('fs')
 const path = require('path')
 
+const orderBy = require('lodash.orderby')
+
 const Page = require('./../models/page.js')
 const Blocks = require('./../queries/blocks.js')
 
@@ -51,7 +53,32 @@ class Pages {
         options = Object.assign({}, this._options, options)
         this._findFiles(this._dirPath, options)
 
+        //
+        if (options.orderBy && options.orderBy.length > 0) {
+            this._orderBy(options)
+        }
+
         return this._results
+    }
+
+    /**
+     *
+     *
+     *  @param  {array} options
+     *
+     */
+    _orderBy(options) {
+        options.orderBy.forEach((key, index) => {
+
+            let direction = 'asc'
+
+            if (key.charAt(0) === '-') {
+                key.slice(0, 1)
+                direction = 'desc'
+            }
+
+            this._results = orderBy(this._results, '_fields.' + key, direction)
+        })
     }
 
     /**
@@ -65,7 +92,7 @@ class Pages {
      */
     _findFiles(dirPath, options) {
 
-        //
+        // getting all files
         const files = fs.readdirSync(dirPath + options.parent, {
             withFileTypes: true
         })

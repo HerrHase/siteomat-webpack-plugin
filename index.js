@@ -3,13 +3,11 @@ const fs = require('fs')
 
 class HappySiteWebpackPlugin {
 
-    constructor(source, views, destination = null, options = {}) {
-        this._options = {
-            source: source,
-            views: views,
-            destination: destination,
-            options: options
-        }
+    constructor(source, views, options = {}) {
+
+        this._source  = source
+        this._views   = views
+        this._options = options
 
         if (!fs.existsSync(source)) {
             throw new Error('source "' + source + '" not found!')
@@ -39,7 +37,7 @@ class HappySiteWebpackPlugin {
                 this._options.destination = compilation.outputOptions.path
             }
 
-            const happySite = new HappySite(this._options.source, this._options.views, this._options.destination, this._options.options)
+            const happySite = new HappySite(this._source, this._views, this._options)
             happySite.run()
         })
     }

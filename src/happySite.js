@@ -29,13 +29,14 @@ class HappySite {
      *  @param  {string} destination
      *
      */
-    constructor(source, views, destination, options = {}) {
+    constructor(source, views, options = {}) {
         this._source = source
         this._views = views
-        this._destination = destination
+        this._destination = options.destination
 
+        // fill singleton for configuration
         configStore.set('source', source)
-        configStore.set('destination', destination)
+        configStore.set('destination', this._destination)
         configStore.set('views', views)
         configStore.set('options', Object.assign({}, {
             'minifyHtml': true
