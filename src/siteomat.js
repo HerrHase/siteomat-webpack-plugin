@@ -20,7 +20,7 @@ const configStore = require('./config.js')
  *  @link https://gitea.node001.net/HerrHase/happy-site-webpack-plugin.git
  *
  */
-class HappySite {
+class Siteomat {
 
     /**
      *
@@ -96,4 +96,4 @@ class HappySite {
     }
 }
 
-module.exports = HappySite
+module.exports = Siteomat

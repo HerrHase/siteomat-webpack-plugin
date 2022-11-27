@@ -1,7 +1,7 @@
-const HappySite = require('./src/happySite.js')
+const Siteomat = require('./src/siteomat.js')
 const fs = require('fs')
 
-class HappySiteWebpackPlugin {
+class SiteomatWebpackPlugin {
 
     constructor(source, views, options = {}) {
 
@@ -20,7 +20,7 @@ class HappySiteWebpackPlugin {
 
     apply(compiler) {
 
-        const pluginName = HappySiteWebpackPlugin.name
+        const pluginName = SiteomatWebpackPlugin.name
 
         // webpack module instance can be accessed from the compiler object,
         // this ensures that correct version of the module is used
@@ -37,10 +37,10 @@ class HappySiteWebpackPlugin {
                 this._options.destination = compilation.outputOptions.path
             }
 
-            const happySite = new HappySite(this._source, this._views, this._options)
+            const happySite = new Siteomat(this._source, this._views, this._options)
             happySite.run()
         })
     }
 }
 
-module.exports = HappySiteWebpackPlugin
+module.exports = SiteomatWebpackPlugin
