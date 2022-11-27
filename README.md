@@ -13,6 +13,7 @@ i had development a CMS that runs on Markdown File a few years ago as a proof of
 
 Next will be,
 
+* Some tests
 * Integrate Eta.js and LiquidJS
 
 ## Installation
@@ -40,7 +41,7 @@ plugins: [
 | destination | {String}  | null    | If not set, it will use the public path |
 | htmlMinify  | {Boolean} | true    | Minify Html and remove all Whitespace |
 
-## Markdown Files
+## Pages
 
 ```
 ---
@@ -55,5 +56,9 @@ media:
 ---
 ```
 
-## Block Files
+## Blocks
+
+## Find
+
+## Templates
 

@@ -4,6 +4,10 @@
     "build": "webpack",
     "author": "Björn Hase <me@herr-hase.wtf>",
     "main": "index.js",
+    "repository": {
+      "type": "git",
+      "url": "git@gitea.node001.net:HerrHase/happy-site-webpack-plugin.git"
+    },
     "description": "Generating a Website from a Markdown Generator",
     "dependencies": {
         "crypto": "^1.0.1",
