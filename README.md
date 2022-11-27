@@ -16,9 +16,17 @@ Next will be,
 
 ## Installation
 
+Setup this registry in your project .npmrc file:
+
 ```
-npm i --save-dev siteomat-webpack-plugin
-yarn add --dev siteomat-webpack-plugin
+@helpers:registry=https://gitea.node001.net/api/packages/HerrHase/npm/
+```
+
+Install with npm or yarn
+
+```
+npm i --save-dev @helpers/siteomat-webpack-plugin
+yarn add --dev @helpers/siteomat-webpack-plugin
 ```
 
 ## Configuration
