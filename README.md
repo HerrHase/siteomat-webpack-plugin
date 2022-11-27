@@ -34,6 +34,20 @@ plugins: [
 ]
 ```
 
+or
+
+```
+plugins: [
+    new SiteomatWebpackPlugin(
+        './resources/site',
+        './resources/views',
+        {
+            <options>
+        }
+    )
+]
+```
+
 | Name        | Type      | Default | Description |
 |-------------|-----------|---------|-------------|
 | destination | {String}  | null    | If not set, it will use the public path |
@@ -56,7 +70,24 @@ media:
 
 ## Blocks
 
+"_blocks" in a Directory.
+
 ## Find
+
+Basic Usage:
+
+```
+pageQuery.find()
+```
+
+or with options,
+
+| Name        | Type      | Default | Description |
+|-------------|-----------|---------|-------------|
+| parent      | {String}  | /       |             |
+| deep        | {Integer} | -1      |             |
+| orderBy     | {Array}   | null    |             |
+
 
 ## Templates
 
