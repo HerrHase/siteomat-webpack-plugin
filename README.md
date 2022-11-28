@@ -92,10 +92,12 @@ or with options,
 
 | Name        | Type      | Default | Description |
 |-------------|-----------|---------|-------------|
-| parent      | {String}  | /       |             |
-| deep        | {Integer} | -1      |             |
-| orderBy     | {Array}   | null    |             |
+| parent      | {String}  | /       | Directory for start query |
+| deep        | {Integer} | -1      | Deep of Recursive |
+| orderBy     | {Array}   | null    | Name of field sorting, a "-" in front of the. Nested fields are also possible. |
 
 
 ## Templates
+
+### Nunjucks
 
