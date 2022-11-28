@@ -1,7 +1,7 @@
 const path = require('path')
 const fs = require('fs')
 
-const Media = require('./media.js')
+const Media = require('./../factories/media.js')
 
 /**
  *  asset - checks manifest.json for given path and return
@@ -13,7 +13,7 @@ const Media = require('./media.js')
  */
 
 function asset(staticPath) {
-    
+
     // getting basePath
     let result = staticPath
 

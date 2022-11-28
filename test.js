@@ -1,4 +1,4 @@
-const HappySite = require('./src/happySite.js')
+const Siteomat = require('./src/siteomat.js')
 
-const happySite = new HappySite('./example/site', './example/views', './public')
-happySite.run()
+const siteomat = new Siteomat('./example/site', './example/views', './public')
+siteomat.run()

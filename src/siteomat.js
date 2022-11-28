@@ -1,6 +1,7 @@
 const fs = require('fs')
 const path = require('path')
 const mkdirp = require('mkdirp')
+const { minify } = require('html-minifier')
 
 const configStore = require('./config.js')
 
@@ -78,6 +79,17 @@ class Siteomat {
                 if (!content) {
                     console.error('Error! Rendering Page ' + '"' + page.filename + '" is null')
                     return;
+                }
+
+                const options = configStore.get('options')
+
+                // if options minifyHtml is set, minify html
+                if (options.minifyHtml === true) {
+                    content = minify(content, {
+                        removeComments: true,
+                        collapseWhitespace: true,
+                        collapseInlineTagWhitespace: true
+                    })
                 }
 
                 // create directories and write file = page

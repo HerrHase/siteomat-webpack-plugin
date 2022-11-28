@@ -1,12 +1,11 @@
 const path = require('path')
 const fs = require('fs')
-
 const sharp = require('sharp')
 const mkdirp = require('mkdirp')
 const crypto = require('crypto')
 const slugify = require('slugify')
 
-const configStore = require('./config.js')
+const configStore = require('./../config.js')
 
 /**
  *
@@ -20,7 +19,7 @@ class Media {
 
     /**
      *
-     *  @param  {string} srcPath
+     *  @param  {string} src
      *  @param  {object} sizes
      *  @param  {Object} [options={}]
      *  @return {string}
@@ -75,7 +74,6 @@ class Media {
             // change extension
             this._extension = '.webp'
             this._process
-
                 .webp({
                     lossless: true
                 })
