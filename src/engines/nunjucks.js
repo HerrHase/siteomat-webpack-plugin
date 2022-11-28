@@ -65,7 +65,7 @@ class Engine {
     render(view, data, done) {
 
         // merge data
-        data = assign({}, data, this._defaults)
+        data = assign(data, this._defaults)
 
         this.nunjucks.render(view, data, (error, response) => {
             done(error, response)

@@ -77,7 +77,7 @@ class Pages {
                 direction = 'desc'
             }
 
-            this._results = orderBy(this._results, '_fields.' + key, direction)
+            this._results = orderBy(this._results, key, direction)
         })
     }
 

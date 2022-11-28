@@ -57,7 +57,7 @@ class Page {
      */
     render(engine, done) {
 
-        const page = assign({}, this.fields)
+        const page = merge({}, this.fields)
 
         page.content = this.content
         page.blocks = this.blocks
