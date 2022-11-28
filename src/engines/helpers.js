@@ -12,8 +12,8 @@ const Media = require('./media.js')
  *
  */
 
-function asset(staticPath)
-{
+function asset(staticPath) {
+    
     // getting basePath
     let result = staticPath
 

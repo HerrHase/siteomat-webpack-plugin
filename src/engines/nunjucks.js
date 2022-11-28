@@ -2,16 +2,17 @@ const nunjucks = require('nunjucks')
 const { minify } = require('html-minifier')
 const fs = require('fs')
 
+const configStore = require('./../config.js')
 const { asset, resize } = require('./helpers.js')
-const PageQuery = require('./queries/pages.js')
-const configStore = require('./config.js')
+const PageQuery = require('./../queries/pages.js')
 
 /**
- * engine - handle eta.js
+ *  nunjucks
+ *
  *
  *  @author Björn Hase <me@herr-hase.wtf>
  *  @license http://opensource.org/licenses/MIT The MIT License
- *  @link https://gitea.node001.net/HerrHase/happy-site-webpack-plugin.git
+ *  @link https://gitea.node001.net/HerrHase/siteomat-webpack-plugin.git
  *
  */
 class Engine {

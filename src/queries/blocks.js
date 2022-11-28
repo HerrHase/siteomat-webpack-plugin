@@ -6,9 +6,10 @@ const Block = require('./../models/block.js')
 /**
  *  search, filter and find pages
  *
+ *
  *  @author Björn Hase <me@herr-hase.wtf>
  *  @license http://opensource.org/licenses/MIT The MIT License
- *  @link https://gitea.node001.net/HerrHase/happy-site-webpack-plugin.git
+ *  @link https://gitea.node001.net/HerrHase/siteomat-webpack-plugin.git
  *
  */
 
@@ -22,6 +23,7 @@ class Blocks {
      */
     constructor(dirPath) {
 
+        this.FILE_EXTENSION   = '.md'
         this.DIRECTORY_BLOCKS = '_blocks'
 
         this._dirPath = dirPath + '/' + this.DIRECTORY_BLOCKS;
@@ -45,7 +47,7 @@ class Blocks {
     /**
      *  find files
      *
-     *  @param  {[type]} dirPath
+     *  @param  {string} dirPath
      *  @param  {Object} [parent = '']
      *
      */
@@ -59,7 +61,7 @@ class Blocks {
         files.forEach((file) => {
 
             // skip for file that is not markdown
-            if (file.isFile() && path.extname(file.name) !== '.md') {
+            if (file.isFile() && path.extname(file.name) !== this.FILE_EXTENSION) {
                 return;
             }
 

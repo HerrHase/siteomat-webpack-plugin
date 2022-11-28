@@ -5,7 +5,7 @@ const yaml = require('js-yaml')
  *
  *  @author Björn Hase <me@herr-hase.wtf>
  *  @license http://opensource.org/licenses/MIT The MIT License
- *  @link https://gitea.node001.net/HerrHase/happy-site-webpack-plugin.git
+ *  @link https://gitea.node001.net/HerrHase/siteomat-webpack-plugin.git
  *
  */
 

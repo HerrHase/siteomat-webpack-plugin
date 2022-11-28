@@ -6,7 +6,7 @@ const { marked } = require('marked')
  *
  *  @author Björn Hase <me@herr-hase.wtf>
  *  @license http://opensource.org/licenses/MIT The MIT License
- *  @link https://gitea.node001.net/HerrHase/happy-site-webpack-plugin.git
+ *  @link https://gitea.node001.net/HerrHase/siteomat-webpack-plugin.git
  *
  */
 
@@ -39,4 +39,4 @@ function parseMarkdownFile(fileString) {
     return result
 }
 
-module.exports =parseMarkdownFile
+module.exports = parseMarkdownFile

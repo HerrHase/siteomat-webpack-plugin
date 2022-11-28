@@ -2,22 +2,22 @@ const fs = require('fs')
 const path = require('path')
 const mkdirp = require('mkdirp')
 
-const Engine = require('./engine.js')
-const Sitemap = require('./sitemap.js')
+const configStore = require('./config.js')
+
+const Engine = require('./engines/nunjucks.js')
+const Sitemap = require('./factories/sitemap.js')
 
 const PagesQuery = require('./queries/pages.js')
 const parseYamlFile = require('./parsers/yaml.js')
 
-const configStore = require('./config.js')
-
 /**
- *  Main
+ *  Siteomat
  *
  *
  *
  *  @author Björn Hase <me@herr-hase.wtf>
  *  @license http://opensource.org/licenses/MIT The MIT License
- *  @link https://gitea.node001.net/HerrHase/happy-site-webpack-plugin.git
+ *  @link https://gitea.node001.net/HerrHase/siteomat-webpack-plugin.git
  *
  */
 class Siteomat {

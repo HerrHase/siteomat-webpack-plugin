@@ -2,6 +2,7 @@ const path = require('path')
 const slugify = require('slugify')
 const merge = require('lodash.merge')
 const nunjucks = require('nunjucks')
+const assign = require('assign-deep')
 
 const parseMarkdownFile = require('./../parsers/markdown.js')
 
@@ -11,7 +12,7 @@ const parseMarkdownFile = require('./../parsers/markdown.js')
  *
  *  @author Björn Hase <me@herr-hase.wtf>
  *  @license http://opensource.org/licenses/MIT The MIT License
- *  @link https://gitea.node001.net/HerrHase/happy-site-webpack-plugin.git
+ *  @link https://gitea.node001.net/HerrHase/siteomat-webpack-plugin.git
  *
  */
 
@@ -36,15 +37,15 @@ class Page {
         this.pathname = this._resolvePathname(parent)
 
         // fields merge by default values
-        this._fields = merge({
+        this.fields = merge({
             view: 'page',
             meta: {
                 robots: 'index'
             }
         }, result.fields)
 
-        this._content = result.content
-        this._blocks = blocks
+        this.content = result.content
+        this.blocks = blocks
     }
 
     /**
@@ -56,13 +57,13 @@ class Page {
      */
     render(engine, done) {
 
-        const page = Object.assign({}, this._fields)
+        const page = assign({}, this.fields)
 
-        page.content = this._content
-        page.blocks = this._blocks
+        page.content = this.content
+        page.blocks = this.blocks
         page.path = this.pathname + '/' + this.filename
 
-        return engine.render(this._fields.view, {
+        return engine.render(this.fields.view, {
             page: page
         }, done)
     }
