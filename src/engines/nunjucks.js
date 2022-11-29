@@ -1,6 +1,7 @@
 const nunjucks = require('nunjucks')
 const fs = require('fs')
 const assign = require('assign-deep')
+const { minify } = require('html-minifier')
 
 const configStore = require('./../config.js')
 const { asset, resize } = require('./helpers.js')
@@ -68,6 +69,18 @@ class Engine {
         data = assign(data, this._defaults)
 
         this.nunjucks.render(view, data, (error, response) => {
+
+            const options = configStore.get('options')
+
+            // if options minifyHtml is set, minify html
+            if (options.minifyHtml === true) {
+                response = minify(response, {
+                    removeComments: true,
+                    collapseWhitespace: true,
+                    collapseInlineTagWhitespace: true
+                })
+            }
+
             done(error, response)
         })
     }

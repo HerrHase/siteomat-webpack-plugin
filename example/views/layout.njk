@@ -8,7 +8,7 @@
         {{ site.title }} | {{ page.title }}
     </title>
 
-    {{ helpers.meta(page) }}
+    {{ helpers.meta(page, site) }}
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="{{ asset('/css/styles.css') }}" rel="stylesheet" type="text/css">
@@ -22,7 +22,7 @@
         <div class="bar">
             <div class="bar__start">
                 <h1 class="site-header__title">
-                    
+                    {{ page.title }}
                 </h1>
             </div>
         </div>

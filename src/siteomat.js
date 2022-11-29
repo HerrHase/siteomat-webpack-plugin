@@ -1,7 +1,7 @@
 const fs = require('fs')
 const path = require('path')
 const mkdirp = require('mkdirp')
-const { minify } = require('html-minifier')
+const assign = require('assign-deep')
 
 const configStore = require('./config.js')
 
@@ -31,6 +31,11 @@ class Siteomat {
      *
      */
     constructor(source, views, options = {}) {
+
+        if (options.destination === undefined) {
+            throw new Error('Destination is undefined')
+        }
+
         this._source = source
         this._views = views
         this._destination = options.destination
@@ -39,7 +44,7 @@ class Siteomat {
         configStore.set('source', source)
         configStore.set('destination', this._destination)
         configStore.set('views', views)
-        configStore.set('options', Object.assign({}, {
+        configStore.set('options', assign({
             'minifyHtml': true
         }, options))
 
@@ -79,17 +84,6 @@ class Siteomat {
                 if (!content) {
                     console.error('Error! Rendering Page ' + '"' + page.filename + '" is null')
                     return;
-                }
-
-                const options = configStore.get('options')
-
-                // if options minifyHtml is set, minify html
-                if (options.minifyHtml === true) {
-                    content = minify(content, {
-                        removeComments: true,
-                        collapseWhitespace: true,
-                        collapseInlineTagWhitespace: true
-                    })
                 }
 
                 // create directories and write file = page
