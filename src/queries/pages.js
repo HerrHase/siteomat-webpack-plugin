@@ -1,10 +1,9 @@
 const fs = require('fs')
 const path = require('path')
-
 const orderBy = require('lodash.orderby')
 
 const PageFactory = require('./../factories/page.js')
-const Blocks = require('./../queries/blocks.js')
+const BlocksQuery = require('./../queries/blocks.js')
 
 /**
  *  Pages - search, filter and find pages
@@ -153,7 +152,7 @@ class Pages {
      *
      */
     _getBlocks(dirPath) {
-        const blocksQuery = new Blocks(dirPath)
+        const blocksQuery = new BlocksQuery(dirPath)
         return blocksQuery.find()
     }
 

@@ -1,6 +1,8 @@
 const path = require('path')
 const parseMarkdownFile = require('./../parsers/markdown.js')
 
+const assign = require('assign-deep')
+
 /**
  *  Block
  *
@@ -32,7 +34,7 @@ class Block {
     }
 
     /**
-     *  
+     *
      *
      *  @return {object}
      *

@@ -1,7 +1,7 @@
 const fs = require('fs')
 const path = require('path')
 
-const Block = require('./../models/block.js')
+const BlockFactory = require('./../factories/block.js')
 
 /**
  *  search, filter and find pages
@@ -79,17 +79,14 @@ class Blocks {
             }
 
             // create page object and add to page
-            const block = new Block(fileString)
+            const block = new BlockFactory(fileString)
             const blockname = this._parseBlockname(file.name)
 
             if (!this._results[blockname]) {
                 this._results[blockname] = []
             }
 
-            this._results[blockname].push({
-                fields: block._fields,
-                content: block._content
-            })
+            this._results[blockname].push(block.get())
         })
     }
 
