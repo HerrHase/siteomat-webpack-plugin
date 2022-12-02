@@ -12,6 +12,10 @@ i had development a CMS that runs on Markdown File a few years ago as a proof of
 Next will be,
 
 * Some tests
+* Better Filtering in Queries
+
+Maybe later,
+
 * Integrate Eta.js and LiquidJS
 
 ## Installation
@@ -63,6 +67,8 @@ plugins: [
 
 ## Pages
 
+Pages are Markdown-Files, they are seperates in two parts. First part is a yaml-Section,
+
 ```
 ---
 title: "health goth DIY tattooed"
@@ -76,11 +82,26 @@ media:
 ---
 ```
 
+These yaml will be parsed as a Object and available in Templates. "view" is required. Second
+part will be parsed as Markdown, but could be empty.
+
+## Nesting
+
+```
+index.md
+blog
+┗ index.md
+```
+
 ## Blocks
 
-"_blocks" in a Directory.
 
-## Find
+
+"_blocks" in a Directory,
+
+## Queries
+
+### Pages
 
 Basic Usage:
 
@@ -96,8 +117,4 @@ or with options,
 | deep        | {Integer} | -1      | Deep of Recursive |
 | orderBy     | {Array}   | null    | Name of field sorting, a "-" in front of the. Nested fields are also possible. |
 
-
-## Templates
-
-### Nunjucks
 
