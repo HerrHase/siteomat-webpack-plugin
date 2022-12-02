@@ -89,8 +89,19 @@ part will be parsed as Markdown, but could be empty.
 
 ```
 index.md
+about-me.md
 blog
 └ index.md
+  belly-polaroid-subway.md
+```
+
+will be
+
+```
+index.html
+about-me.html
+blog.html
+blog/belly-polaroid-subway.html
 ```
 
 ## Blocks
