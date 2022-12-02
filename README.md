@@ -90,7 +90,7 @@ part will be parsed as Markdown, but could be empty.
 ```
 index.md
 blog
-┗ index.md
+└ index.md
 ```
 
 ## Blocks
