@@ -31,10 +31,7 @@ class Engine {
         // merge data
         this._options = assign({}, {
             autoescapes: true,
-            throwOnUndefined: true,
-            web: {
-                async: true
-            }
+            throwOnUndefined: true
         }, options)
 
         this.nunjucks = nunjucks.configure(views, this._options)
@@ -63,12 +60,18 @@ class Engine {
      *  @return {string}
      *
      */
-    render(view, data, done) {
+    render(page, done) {
 
         // merge data
-        data = assign(data, this._defaults)
+        const data = assign({
+            page: page
+        }, this._defaults)
 
-        this.nunjucks.render(view, data, (error, response) => {
+        this.nunjucks.render(data.page.view, data, (error, response) => {
+
+            if (error) {
+                console.error(error)
+            }
 
             const options = configStore.get('options')
 

@@ -73,7 +73,7 @@ class Siteomat {
 
         // run through pages and generate html files
         results.forEach((page, index) => {
-            page.render(this._engine, (error, content) => {
+            this._engine.render(page, (error, content) => {
 
                 // show errors
                 if (error) {
@@ -97,6 +97,7 @@ class Siteomat {
                 if ((index + 1) === results.length) {
                     fs.writeFileSync(this._destination + '/sitemap.xml', sitemap.getXmlAsString())
                 }
+
             })
         })
     }

@@ -3,7 +3,7 @@ const path = require('path')
 
 const orderBy = require('lodash.orderby')
 
-const Page = require('./../models/page.js')
+const PageFactory = require('./../factories/page.js')
 const Blocks = require('./../queries/blocks.js')
 
 /**
@@ -140,8 +140,8 @@ class Pages {
             const blocks = this._getBlocks(dirPath + options.parent + '/' + file.name)
 
             // create page object and add to page
-            const page = new Page(file, options.parent, content, blocks)
-            this._results.push(page)
+            const page = new PageFactory(file, options.parent, content, blocks)
+            this._results.push(page.get())
         })
     }
 

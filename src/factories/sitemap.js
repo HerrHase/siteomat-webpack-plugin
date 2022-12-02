@@ -60,6 +60,7 @@ class Sitemap {
         let result = true
 
         if (page.meta) {
+            page.meta = Object.entries(page.meta)
             page.meta.forEach((meta) => {
                 if (meta['name'] === 'robots' && meta['content'].includes('noindex')) {
                     result = false
@@ -103,4 +104,4 @@ class Sitemap {
     }
 }
 
-module.exports =Sitemap
+module.exports = Sitemap
