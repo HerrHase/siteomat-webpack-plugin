@@ -38,7 +38,7 @@ class Page {
 
         // fields merge by default values
         this._fields = merge({
-            view: 'page',
+            view: 'page.njk',
             meta: {
                 robots: 'index'
             }
