@@ -19,7 +19,7 @@ Next will be,
 Maybe later,
 
 * Integrate Eta.js and LiquidJS
-* Hooks for handle
+* Hooks for handle generic content
 
 ## Installation
 
