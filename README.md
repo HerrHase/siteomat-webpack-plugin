@@ -192,11 +192,11 @@ optimize Images. The Filter needs a relative Path in the File Structure.
 Basic Usage:
 
 ```
-{% page.teaser.src | resize({ 'width' '300' }) %}
+{% page.teaser.src | resize({ 'width': '300' }) %}
 ```
 
 Add options:
 
 ```
-{% page.teaser.src | resize({ 'width' '300' }, { sigma: 2 }) %}
+{% page.teaser.src | resize({ 'width': '300' }, { sigma: 2 }) %}
 ```
