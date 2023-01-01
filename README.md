@@ -143,7 +143,7 @@ can be used like this,
 
 ## Queries
 
-Queries can be used in Templates to get
+Queries can be used in Templates to get Pages.
 
 ### Pages
 
@@ -160,6 +160,24 @@ or with options,
 | parent      | {String}  | /       | Directory for start query |
 | deep        | {Integer} | -1      | Deep of Recursive |
 | orderBy     | {Array}   | null    | Name of field sorting, a "-" in front of the. Nested fields are also possible. |
+| limit       | {Integer} | null    | Limit results |
+| filter      | {Object}  | null    | Filtering results by Fields in yaml |
+
+#### Filter
+
+Basic Usage:
+
+```
+{
+    <fieldname>: {
+        <operator>: <value>
+    }
+}
+```
+
+| Name        | Description |
+|-------------|-------------|
+| _eq         | Equal Value |
 
 ## Sitemap
 

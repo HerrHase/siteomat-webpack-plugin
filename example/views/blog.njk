@@ -1,1 +1,15 @@
 {% extends('layout.njk') %}
+
+{% block main %}
+
+{% set posts = pageQuery.find({ orderBy: [ '-date_published' ], limit: 1, filter: { view: { _eq: 'post.njk' } } }) %}
+
+{% for post in posts %}
+    <a class="post" href="{{ post.path }}">
+        <h2 class="post__title">
+            {{ post.title }}
+        </h2>
+    </a>
+{% endfor %}
+
+{% endblock %}

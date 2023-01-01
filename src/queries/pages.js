@@ -48,6 +48,7 @@ class Pages {
      */
     find(options = {}) {
         this._results = []
+        this._count = 0
 
         options = Object.assign({}, this._options, options)
         this._findFiles(this._dirPath, options)
@@ -58,6 +59,28 @@ class Pages {
         }
 
         return this._results
+    }
+
+    /**
+     *  filtering single results from query
+     *  if filter is set check result
+     *
+     *  @param  {array} result
+     *  @param  {array} options
+     *  @return {boolean}
+     *
+     */
+    _filter(result, options) {
+
+        let isValid = true
+
+        for (const [key, value] of Object.entries(options.filter)) {
+            if (value['_eq'] && result[key] !== value['_eq']) {
+                isValid = false
+            }
+        }
+
+        return isValid
     }
 
     /**
@@ -140,6 +163,17 @@ class Pages {
 
             // create page object and add to page
             const page = new PageFactory(file, options.parent, content, blocks)
+
+            // check for filters and skip
+            if (options.filter && !this._filter(page.get(), options)) {
+                return;
+            }
+
+            // check for filters and skip
+            if (options.limit && options.limit <= this._results.length) {
+                return;
+            }
+
             this._results.push(page.get())
         })
     }
