@@ -78,12 +78,15 @@ class Engine {
             const options = configStore.get('options')
 
             // if options minifyHtml is set, minify html
-            if (options.minifyHtml === true) {
+            if (options.minifyHtml === true && data.page.type === 'html') {
                 response = minify(response, {
                     removeComments: true,
                     collapseWhitespace: true,
-                    collapseInlineTagWhitespace: true
+                    keepClosingSlash: true,
+                    removeOptionalTags: false
                 })
+            } else {
+                response = response.replace(/^(?:[\t ]*(?:\r?\n|\r))+/gm, '')
             }
 
             done(error, response)
