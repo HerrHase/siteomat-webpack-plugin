@@ -59,7 +59,7 @@ class Sitemap {
 
         let result = true
 
-        if (page.meta && page.type === 'html') {
+        if (page.meta) {
             page.meta = Object.entries(page.meta)
             page.meta.forEach((meta) => {
                 if (meta['name'] === 'robots' && meta['content'].includes('noindex')) {
@@ -67,6 +67,10 @@ class Sitemap {
                     return;
                 }
             })
+        }
+
+        if (page.type !== 'html') {
+            result = false
         }
 
         return result
