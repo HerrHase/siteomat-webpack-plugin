@@ -6,6 +6,7 @@ const { minify } = require('html-minifier')
 const configStore = require('./../config.js')
 const { asset, resize } = require('./helpers.js')
 const PageQuery = require('./../queries/pages.js')
+const dayjs = require('dayjs')
 
 /**
  *  nunjucks
@@ -48,6 +49,7 @@ class Engine {
         this._defaults = {
             site: site,
             asset: asset,
+            dayjs: dayjs,
             pageQuery: new PageQuery(configStore.get('source'))
         }
     }

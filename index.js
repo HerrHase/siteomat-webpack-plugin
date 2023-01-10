@@ -1,6 +1,11 @@
 const Siteomat = require('./src/siteomat.js')
 const fs = require('fs')
 
+/**
+ *
+ *
+ *  
+ */
 class SiteomatWebpackPlugin {
 
     constructor(source, views, options = {}) {

@@ -2,7 +2,7 @@
 
 {% block main %}
 
-{% set posts = pageQuery.find({ orderBy: [ '-date_published' ], limit: 1, filter: { view: { _eq: 'post.njk' } } }) %}
+{% set posts = pageQuery.find({ orderBy: [ '-date_published' ], limit: 2, filter: { view: { _eq: 'post.njk' } } }) %}
 
 {% for post in posts %}
     <a class="post" href="{{ post.path }}">

@@ -32,17 +32,18 @@ class Page {
         // parse file
         const result = parseMarkdownFile(fileString)
 
-        // adding filename for html as pathname and relative path in structure
-        this._filename = this._resolveFilename(file)
-        this._pathname = this._resolvePathname(parent)
-
         // fields merge by default values
         this._fields = merge({
             view: 'page.njk',
+            type: 'html',
             meta: {
                 robots: 'index'
             }
         }, result.fields)
+
+        // adding filename for html as pathname and relative path in structure
+        this._filename = this._resolveFilename(file)
+        this._pathname = this._resolvePathname(parent)
 
         this._content = result.content
         this._blocks = blocks
@@ -62,7 +63,6 @@ class Page {
             'path'     : this._pathname + '/' + this._filename,
             'filename' : this._filename,
             'pathname' : this._pathname
-
         }, this._fields)
     }
 
@@ -87,7 +87,7 @@ class Page {
             filename = slugify(filename)
         }
 
-        return filename + '.html'
+        return filename + '.' + this._fields.type
     }
 
     /**

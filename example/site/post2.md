@@ -1,6 +1,8 @@
 ---
 title: "health goth DIY tattooed"
 view: "post.njk"
+date_published: "10.10.2022"
+excerpt: "ddd"
 meta:
     description: "DSA yes plz hot chicken green juice"
 ---

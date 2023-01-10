@@ -1,0 +1,54 @@
+{% set posts = pageQuery.find({ orderBy: [ '-date_published' ], limit: 10, filter: { view: { _eq: 'post.njk' } } }) %}
+
+{% set http = 'http' %}
+
+{% if (site.https) %}
+    {% set http = 'https' %}
+{% endif %}
+
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+>
+    <channel>
+        <title>{{ site.title }}</title>
+	    <atom:link href="{{ http }}://{{ site.domain }}{{ page.path }}" rel="self" type="application/rss+xml" />
+	    <link>{{ http }}://{{ site.domain }}</link>
+
+        {% if site.description %}
+	    <description>{{ site.description }}</description>
+        {% endif %}
+
+	    <lastBuildDate>{{ dayjs() }}</lastBuildDate>
+	    <language>{{ site.language }}-{{ site.language | upper }}</language>
+	    <sy:updatePeriod>hourly</sy:updatePeriod>
+	    <sy:updateFrequency>1</sy:updateFrequency>
+	    <generator>https://gitea.node001.net/HerrHase/siteomat-webpack-plugin</generator>
+        {% for post in posts %}
+            <item>
+                <title>{{ post.title }}</title>
+                <link>{{ http }}://{{ site.domain }}{{ post.path }}</link>
+                <pubDate>{{ dayjs(post.date_published) }}</pubDate>
+
+                {% if post.excerpt %}
+                <description>
+                    {{ post.excerpt }}
+                </description>
+                {% endif %}
+
+                <content:encoded>
+                    <![CDATA[
+                        {{ post.content | safe }}
+                    ]]>
+                </content:encoded>
+
+                <guid>{{ http }}://{{ site.domain }}{{ post.path }}</guid>
+            </item>
+        {% endfor %}
+    </channel>
+</rss>

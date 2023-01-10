@@ -1,6 +1,6 @@
 ---
 title: "health goth DIY tattooed"
-view: "home.njk"
+view: "page.njk"
 meta:
     description: "La"
 media:

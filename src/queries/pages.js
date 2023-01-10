@@ -78,6 +78,56 @@ class Pages {
             if (value['_eq'] && result[key] !== value['_eq']) {
                 isValid = false
             }
+
+            if (value['_neq'] && result[key] === value['_eq']) {
+                isValid = false
+            }
+
+            /**
+
+            if (value['_in'] && value['_in'].indexOf(result[key]) !== -1) {
+                isValid = false
+            }
+
+            if (value['_nin'] && value['_nin'].indexOf(result[key]) === -1) {
+                isValid = false
+            }
+
+            if (value['_lt'] && result[key] < value['_lt']) {
+                isValid = false
+            }
+
+            if (value['_lte'] && result[key] <= value['_lte']) {
+                isValid = false
+            }
+
+            if (value['_gt'] && result[key] > value['_gt']) {
+                isValid = false
+            }
+
+            if (value['_gte'] && result[key] >= value['_gt']) {
+                isValid = false
+            }
+
+            if (value['_null'] && result[key]) {
+                isValid = false
+            }
+
+            if (value['_nnull'] && !result[key]) {
+                isValid = false
+            }
+
+            if (value['_contains'] && !result[key]) {
+                isValid = false
+            }
+
+            if (value['_ncontains'] && !result[key]) {
+                isValid = false
+            }
+
+            if (value['_regex'] && result[key].test(value['_regex'])) {
+                isValid = false
+            }*/
         }
 
         return isValid
@@ -221,4 +271,4 @@ class Pages {
 
 }
 
-module.exports =Pages
+module.exports = Pages
