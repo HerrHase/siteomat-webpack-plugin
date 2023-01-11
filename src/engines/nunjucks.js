@@ -57,9 +57,8 @@ class Engine {
     /**
      *  render
      *
-     *  @param  {string} view
-     *  @param  {object} data
-     *  @return {string}
+     *  @param  {object} page
+     *  @param  {function} done
      *
      */
     render(page, done) {
@@ -77,7 +76,7 @@ class Engine {
 
             const options = configStore.get('options')
 
-            // if options minifyHtml is set, minify html
+            // if options minifyHtml is set, minify html, but only if page has type html
             if (options.minifyHtml === true && data.page.type === 'html') {
                 response = minify(response, {
                     removeComments: true,
@@ -85,6 +84,8 @@ class Engine {
                     keepClosingSlash: true,
                     removeOptionalTags: false
                 })
+
+            // remove empty lines
             } else {
                 response = response.replace(/^(?:[\t ]*(?:\r?\n|\r))+/gm, '')
             }

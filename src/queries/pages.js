@@ -75,22 +75,44 @@ class Pages {
         let isValid = true
 
         for (const [key, value] of Object.entries(options.filter)) {
+
+            // equal
             if (value['_eq'] && result[key] !== value['_eq']) {
                 isValid = false
             }
 
-            if (value['_neq'] && result[key] === value['_eq']) {
+            // not equal
+            if (value['_neq'] && result[key] === value['_neq']) {
                 isValid = false
             }
 
-            /**
+            // in
+            if (value['_in'] && Array.isArray(value['_in'])) {
 
-            if (value['_in'] && value['_in'].indexOf(result[key]) !== -1) {
-                isValid = false
-            }
+				// if result no exists
+				if (!result[key]) {
+					isValid = false
+				}
 
-            if (value['_nin'] && value['_nin'].indexOf(result[key]) === -1) {
-                isValid = false
+                if (Array.isArray(result[key])) {
+
+					let found = false
+
+                  	result[key].forEach((v, index) => {
+						if (value['_in'].indexOf(v) !== -1) {
+							found = true
+						}
+                  	})
+
+					if (!found) {
+						isValid = false
+					}
+
+                } else {
+					if (value['_in'].indexOf(result[key]) === -1) {
+						isValid = false
+					}
+                }
             }
 
             if (value['_lt'] && result[key] < value['_lt']) {
@@ -105,7 +127,7 @@ class Pages {
                 isValid = false
             }
 
-            if (value['_gte'] && result[key] >= value['_gt']) {
+            if (value['_gte'] && result[key] >= value['_gte']) {
                 isValid = false
             }
 
@@ -116,18 +138,6 @@ class Pages {
             if (value['_nnull'] && !result[key]) {
                 isValid = false
             }
-
-            if (value['_contains'] && !result[key]) {
-                isValid = false
-            }
-
-            if (value['_ncontains'] && !result[key]) {
-                isValid = false
-            }
-
-            if (value['_regex'] && result[key].test(value['_regex'])) {
-                isValid = false
-            }*/
         }
 
         return isValid
