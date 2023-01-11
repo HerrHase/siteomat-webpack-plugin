@@ -90,6 +90,8 @@ media:
 The yaml-Section will be parsed as an Object and available in the Templates. The
 second part of the File will be parsed as Markdown, but it could be also empty.
 
+Default type for Pages is **html**. 
+
 ## Nesting
 
 A Page can be a single Markdown-File, or a Directory with a index-File inside.
