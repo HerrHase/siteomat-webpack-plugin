@@ -219,13 +219,13 @@ Add options:
 
 ```
 {% page.teaser.src | resize({ 'width': '300' }, { sigma: 2 }) %}
-``
+```
 
 ## Json
 
 Results from PageQuery can also be created as json-File. The can use with a
 simple API [https://gitea.node001.net/HerrHase/siteomat-api](https://gitea.node001.net/HerrHase/siteomat-api). Create a
-File "json.yml" and add options. 
+File "json.yml" and add options.
 
 Basic Usage:
 
