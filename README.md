@@ -90,7 +90,7 @@ media:
 The yaml-Section will be parsed as an Object and available in the Templates. The
 second part of the File will be parsed as Markdown, but it could be also empty.
 
-Default type for Pages is **html**. 
+Default type for Pages is **html**.
 
 ## Nesting
 
@@ -219,4 +219,21 @@ Add options:
 
 ```
 {% page.teaser.src | resize({ 'width': '300' }, { sigma: 2 }) %}
+``
+
+## Json
+
+Results from PageQuery can also be created as json-File. The can use with a
+simple API [https://gitea.node001.net/HerrHase/siteomat-api](https://gitea.node001.net/HerrHase/siteomat-api). Create a
+File "json.yml" and add options. 
+
+Basic Usage:
+
+```
+posts:
+    orderBy:
+        - '-date_published'
+    filter:
+        view:
+            _eq: 'post.njk'
 ```
