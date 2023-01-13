@@ -56,6 +56,11 @@ class Siteomat {
             throw new Error('site.yml not found in ' + this._source + '!')
         }
 
+		if (fs.existsSync(this._source + '/json.yml')) {
+            const file = fs.readFileSync(this._source + '/json.yml', 'utf8')
+            this._json = parseYamlFile(file)
+        }
+
         configStore.set('site', this._site)
 
         this._engine = new Engine(views, this._site)
@@ -100,6 +105,13 @@ class Siteomat {
 
             })
         })
+
+		if (this._json) {
+			for (const [name, options] of Object.entries(this._json)) {
+				const json = query.find(options)
+	            fs.writeFileSync(this._destination + '/' + name + '.json', JSON.stringify(json))
+			}
+		}
     }
 }
 

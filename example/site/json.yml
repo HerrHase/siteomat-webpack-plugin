@@ -1,0 +1,6 @@
+posts:
+    orderBy:
+        - '-date_published'
+    filter:
+        view:
+            _eq: 'post.njk'
