@@ -13,6 +13,7 @@
     },
     "description": "A Webpack Plugin for generating a Website as Html-Files from a Markdown File Structure",
     "dependencies": {
+        "@helpers/siteomat-query": "^0.1.0",
         "assign-deep": "^1.0.1",
         "crypto": "^1.0.1",
         "dayjs": "^1.11.6",

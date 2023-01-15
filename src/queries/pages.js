@@ -1,6 +1,8 @@
 const fs = require('fs')
 const path = require('path')
-const orderBy = require('lodash.orderby')
+const {
+	Filter, orderBy, reduce
+} = require('@helpers/siteomat-query')
 
 const PageFactory = require('./../factories/page.js')
 const BlocksQuery = require('./../queries/blocks.js')
@@ -51,116 +53,23 @@ class Pages {
         this._count = 0
 
         options = Object.assign({}, this._options, options)
+
+		if (options.filter) {
+			this._filter = new Filter(options.filter)
+		}
+
         this._findFiles(this._dirPath, options)
 
         //
         if (options.orderBy && options.orderBy.length > 0) {
-            this._orderBy(options)
+        	this.results = orderBy(options.orderBy, this._results)
         }
+
+		if (options.limit || options.offset) {
+			this._results = reduce(options, this._results)
+		}
 
         return this._results
-    }
-
-    /**
-     *  filtering single results from query
-     *  if filter is set check result
-     *
-     *  @param  {array} result
-     *  @param  {array} options
-     *  @return {boolean}
-     *
-     */
-    _filter(result, options) {
-
-        let isValid = true
-
-        for (const [key, value] of Object.entries(options.filter)) {
-
-            // equal
-            if (value['_eq'] && result[key] !== value['_eq']) {
-                isValid = false
-            }
-
-            // not equal
-            if (value['_neq'] && result[key] === value['_neq']) {
-                isValid = false
-            }
-
-            // in
-            if (value['_in'] && Array.isArray(value['_in'])) {
-
-				// if result no exists
-				if (!result[key]) {
-					isValid = false
-				}
-
-                if (Array.isArray(result[key])) {
-
-					let found = false
-
-                  	result[key].forEach((v, index) => {
-						if (value['_in'].indexOf(v) !== -1) {
-							found = true
-						}
-                  	})
-
-					if (!found) {
-						isValid = false
-					}
-
-                } else {
-					if (value['_in'].indexOf(result[key]) === -1) {
-						isValid = false
-					}
-                }
-            }
-
-            if (value['_lt'] && result[key] < value['_lt']) {
-                isValid = false
-            }
-
-            if (value['_lte'] && result[key] <= value['_lte']) {
-                isValid = false
-            }
-
-            if (value['_gt'] && result[key] > value['_gt']) {
-                isValid = false
-            }
-
-            if (value['_gte'] && result[key] >= value['_gte']) {
-                isValid = false
-            }
-
-            if (value['_null'] && result[key]) {
-                isValid = false
-            }
-
-            if (value['_nnull'] && !result[key]) {
-                isValid = false
-            }
-        }
-
-        return isValid
-    }
-
-    /**
-     *
-     *
-     *  @param  {array} options
-     *
-     */
-    _orderBy(options) {
-        options.orderBy.forEach((key, index) => {
-
-            let direction = 'asc'
-
-            if (key.charAt(0) === '-') {
-                key.slice(0, 1)
-                direction = 'desc'
-            }
-
-            this._results = orderBy(this._results, key, direction)
-        })
     }
 
     /**
@@ -225,12 +134,7 @@ class Pages {
             const page = new PageFactory(file, options.parent, content, blocks)
 
             // check for filters and skip
-            if (options.filter && !this._filter(page.get(), options)) {
-                return;
-            }
-
-            // check for filters and skip
-            if (options.limit && options.limit <= this._results.length) {
+            if (this._filter && !this._filter.validate(page.get())) {
                 return;
             }
 
