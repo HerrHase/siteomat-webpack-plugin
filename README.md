@@ -7,7 +7,12 @@ A Webpack Plugin that wraps [@site-o-mat/core](https://gitea.node001.net/site-o-
 Setup this registry in your project .npmrc file:
 
 ```
-@helpers:registry=https://gitea.node001.net/api/packages/site-o-mat/npm/
+@site-o-mat:registry=https://gitea.node001.net/api/packages/site-o-mat/npm/
+```
+
+or run
+```
+npm config set @site-o-mat:registry=https://gitea.node001.net/api/packages/site-o-mat/npm/
 ```
 
 Install with npm or yarn
