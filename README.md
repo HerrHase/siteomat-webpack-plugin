@@ -1,4 +1,4 @@
-# Site-O-Mat Webpack Plugin
+# Site-O-Mat / Webpack Plugin
 
 A Webpack Plugin that wraps [@site-o-mat/core](https://gitea.node001.net/site-o-mat/core).
 
