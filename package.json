@@ -1,36 +1,15 @@
 {
-    "name": "@helpers/siteomat-webpack-plugin",
-    "version": "0.5.0",
+    "name": "@site-o-mat/webpack-plugin",
+    "version": "0.1.0",
     "build": "webpack",
     "author": "Björn Hase <me@herr-hase.wtf>",
     "main": "index.js",
     "repository": {
         "type": "git",
-        "url": "git@gitea.node001.net:HerrHase/siteomat-webpack-plugin.git"
-    },
-    "scripts": {
-        "test": "mocha"
+        "url": "git@gitea.node001.net:site-o-mat/webpack-plugin.git"
     },
     "description": "A Webpack Plugin for generating a Website as Html-Files from a Markdown File Structure",
     "dependencies": {
-        "@helpers/siteomat-query": "^0.1.0",
-        "assign-deep": "^1.0.1",
-        "crypto": "^1.0.1",
-        "dayjs": "^1.11.6",
-        "fast-xml-parser": "^4.0.11",
-        "html-minifier": "^4.0.0",
-        "js-yaml": "^4.1.0",
-        "lodash.merge": "^4.6.2",
-        "lodash.orderby": "^4.6.0",
-        "marked": "^4.1.1",
-        "mkdirp": "^1.0.4",
-        "nunjucks": "^3.2.3",
-        "sharp": "^0.31.1",
-        "slugify": "^1.6.5",
-        "yaml": "^2.1.3"
-    },
-    "devDependencies": {
-        "chai": "^4.3.7",
-        "mocha": "^10.2.0"
+        "@site-o-mat/core": "^0.1.0"
     }
 }

@@ -1,4 +1,4 @@
-const Siteomat = require('./src/siteomat.js')
+const Siteomat = require('@site-o-mat/core')
 const fs = require('fs')
 
 /**
