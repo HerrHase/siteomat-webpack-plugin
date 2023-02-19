@@ -9,7 +9,7 @@
         "url": "git@gitea.node001.net:site-o-mat/webpack-plugin.git"
     },
     "description": "A Webpack Plugin for generating a Website as Html-Files from a Markdown File Structure",
-    "devDependencies": {
+    "dependencies": {
         "@site-o-mat/core": "^0.2.0"
     }
 }
