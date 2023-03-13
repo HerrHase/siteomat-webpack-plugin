@@ -1,6 +1,6 @@
 {
     "name": "@site-o-mat/webpack-plugin",
-    "version": "0.3.1",
+    "version": "0.3.2",
     "build": "webpack",
     "author": "Björn Hase <me@herr-hase.wtf>",
     "main": "index.js",
@@ -10,6 +10,6 @@
     },
     "description": "A Webpack Plugin for generating a Website as Html-Files from a Markdown File Structure",
     "dependencies": {
-        "@site-o-mat/core": "^0.3.1"
+        "@site-o-mat/core": "^0.3.2"
     }
 }
